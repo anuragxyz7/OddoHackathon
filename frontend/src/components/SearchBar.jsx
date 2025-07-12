@@ -1,18 +1,22 @@
-import React from 'react';
-// import './SearchBar.css';
+// src/components/SearchBar.jsx
+import { TextField, InputAdornment, Button } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
 
-const SearchBar = ({ searchTerm, setSearchTerm }) => {
-  return (
-    <div className="search-bar">
-      <input
-        type="text"
-        placeholder="Search by skill..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-      <button>Search</button>
-    </div>
-  );
-};
+const SearchBar = () => (
+  <div style={{ display: 'flex', gap: '10px', marginBottom: '20px' }}>
+    <TextField
+      fullWidth
+      placeholder="Search by skill..."
+      InputProps={{
+        startAdornment: (
+          <InputAdornment position="start">
+            <SearchIcon />
+          </InputAdornment>
+        ),
+      }}
+    />
+    <Button variant="contained">Search</Button>
+  </div>
+);
 
 export default SearchBar;

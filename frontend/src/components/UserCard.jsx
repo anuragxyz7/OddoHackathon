@@ -1,37 +1,58 @@
+// src/components/UserCard/UserCard.jsx
 import React from 'react';
-import { Button } from '@mui/material'; // or your preferred UI library
+import { 
+  Card, 
+  CardContent, 
+  Typography, 
+  Avatar, 
+  Button, 
+  Box,
+  Divider
+} from '@mui/material';
+import StarIcon from '@mui/icons-material/Star';
 
 const UserCard = ({ user }) => {
   return (
-    <div className="user-card">
-      <div className="user-header">
-        <img 
-          src={user.profilePhoto || '/default-avatar.png'} 
-          alt={user.name}
-          className="profile-photo"
-        />
-        <h3>{user.name}</h3>
-      </div>
-      
-      <div className="skills-section">
-        <div className="offered">
-          <h4>Skills Offered:</h4>
-          <p>{user.skillsOffered.join(', ')}</p>
-        </div>
-        <div className="wanted">
-          <h4>Skills Wanted:</h4>
-          <p>{user.skillsWanted.join(', ')}</p>
-        </div>
-      </div>
-      
-      <div className="rating">
-        <span>Rating: {user.rating}/5</span>
-      </div>
-      
-      <Button variant="contained" className="request-btn">
-        Request Swap
-      </Button>
-    </div>
+    <Card sx={{ mb: 3 }}>
+      <CardContent>
+        <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+          <Avatar sx={{ width: 56, height: 56, mr: 2 }}>
+            {user.name.charAt(0)}
+          </Avatar>
+          <Typography variant="h6">{user.name}</Typography>
+        </Box>
+        
+        <Divider sx={{ my: 1 }} />
+        
+        <Box sx={{ mb: 1 }}>
+          <Typography variant="subtitle2">Skills Offered:</Typography>
+          <Typography>{user.skillsOffered.join(', ')}</Typography>
+        </Box>
+        
+        <Box sx={{ mb: 2 }}>
+          <Typography variant="subtitle2">Skills Wanted:</Typography>
+          <Typography>{user.skillsWanted.join(', ')}</Typography>
+        </Box>
+        
+        <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+          {[...Array(5)].map((_, i) => (
+            <StarIcon 
+              key={i} 
+              sx={{ color: i < Math.floor(user.rating) ? 'gold' : 'grey' }} 
+            />
+          ))}
+          <Typography sx={{ ml: 1 }}>{user.rating}/5</Typography>
+        </Box>
+        
+        <Button 
+          variant="contained" 
+          fullWidth
+          sx={{ bgcolor: 'primary.main' }}
+        >
+          Request Swap
+        </Button>
+      </CardContent>
+    </Card>
   );
 };
 
