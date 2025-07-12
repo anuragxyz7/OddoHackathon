@@ -1,58 +1,68 @@
-// src/components/UserCard/UserCard.jsx
 import React from 'react';
-import { 
-  Card, 
-  CardContent, 
-  Typography, 
-  Avatar, 
-  Button, 
-  Box,
-  Divider
-} from '@mui/material';
-import StarIcon from '@mui/icons-material/Star';
+import { Avatar, Button, Typography, Box, Rating } from '@mui/material';
+import '../UserCard.css';
 
 const UserCard = ({ user }) => {
   return (
-    <Card sx={{ mb: 3 }}>
-      <CardContent>
-        <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-          <Avatar sx={{ width: 56, height: 56, mr: 2 }}>
-            {user.name.charAt(0)}
-          </Avatar>
-          <Typography variant="h6">{user.name}</Typography>
+    <Box className="user-card-container" sx={{ marginLeft: '24px' }}>
+      <Avatar 
+        src={user.profilePhoto} 
+        alt={user.name}
+        sx={{ 
+          width: 70, 
+          height: 70,
+          marginRight: '20px',
+          fontSize: '28px',
+          backgroundColor: '#3f51b5',
+          fontFamily: "'Roboto', sans-serif"
+        }}
+      >
+        {user.name.charAt(0)}
+      </Avatar>
+
+      <Box className="user-info">
+        <Typography variant="h5" fontWeight="bold" fontFamily="'Roboto', sans-serif">
+          {user.name}
+        </Typography>
+        
+        <Box className="skills-section">
+          <Typography variant="body1" fontFamily="'Roboto', sans-serif">
+            <span className="skill-label">Skills offered:</span> {user.skillsOffered.join(', ')}
+          </Typography>
+          <Typography variant="body1" fontFamily="'Roboto', sans-serif">
+            <span className="skill-label">Skills wanted:</span> {user.skillsWanted.join(', ')}
+          </Typography>
         </Box>
         
-        <Divider sx={{ my: 1 }} />
-        
-        <Box sx={{ mb: 1 }}>
-          <Typography variant="subtitle2">Skills Offered:</Typography>
-          <Typography>{user.skillsOffered.join(', ')}</Typography>
+        <Box className="rating-section">
+          <Rating 
+            value={user.rating} 
+            precision={0.1} 
+            readOnly 
+            size="medium"
+          />
+          <Typography variant="body1" ml={1} fontFamily="'Roboto', sans-serif">
+            ({user.totalRatings} reviews)
+          </Typography>
         </Box>
-        
-        <Box sx={{ mb: 2 }}>
-          <Typography variant="subtitle2">Skills Wanted:</Typography>
-          <Typography>{user.skillsWanted.join(', ')}</Typography>
-        </Box>
-        
-        <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-          {[...Array(5)].map((_, i) => (
-            <StarIcon 
-              key={i} 
-              sx={{ color: i < Math.floor(user.rating) ? 'gold' : 'grey' }} 
-            />
-          ))}
-          <Typography sx={{ ml: 1 }}>{user.rating}/5</Typography>
-        </Box>
-        
-        <Button 
-          variant="contained" 
-          fullWidth
-          sx={{ bgcolor: 'primary.main' }}
-        >
-          Request Swap
-        </Button>
-      </CardContent>
-    </Card>
+      </Box>
+
+      <Button 
+        variant="contained" 
+        color="primary"
+        sx={{
+          marginLeft: 'auto',
+          alignSelf: 'center',
+          minWidth: '120px',
+          height: '42px',
+          fontSize: '16px',
+          fontFamily: "'Roboto', sans-serif",
+          fontWeight: 'bold'
+        }}
+      >
+        REQUEST
+      </Button>
+    </Box>
   );
 };
 
