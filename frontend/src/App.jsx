@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import BrowsePage from './pages/BrowsePage';
 import Login from './pages/Auth/Login';
+<<<<<<< HEAD
 import { AuthProvider } from './contexts/AuthContext';
 import Profile from './pages/Profile';
 function App() {
@@ -21,6 +22,22 @@ function App() {
         </Routes>
       </BrowserRouter>
     </AuthProvider>
+=======
+import SweepRequest from './pages/SweepRequest.jsx';
+
+function App() {
+  return (
+    <BrowserRouter>
+      <CssBaseline />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/browse" element={<BrowsePage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/request" element={<SweepRequest />} />
+      </Routes>
+    </BrowserRouter>
+>>>>>>> 9c5d4ec (xyz)
   );
 }
 

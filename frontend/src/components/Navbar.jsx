@@ -27,8 +27,9 @@ const Navbar = () => {
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h6" sx={{ flexGrow: 1 }}>
-          Skill Swap
+          Skill Swap Platform
         </Typography>
+<<<<<<< HEAD
         
         {user ? (
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -59,6 +60,17 @@ const Navbar = () => {
             Login
           </Button>
         )}
+=======
+        <Button color="inherit" onClick={() => navigate('/')}>
+          Home
+        </Button>
+        <Button color="inherit" onClick={() => navigate('/browse')}>
+          Browse
+        </Button>
+        <Button color="inherit" onClick={() => navigate('/login')}>
+          Login
+        </Button>
+>>>>>>> 9c5d4ec (xyz)
       </Toolbar>
     </AppBar>
   );

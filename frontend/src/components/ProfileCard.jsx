@@ -1,6 +1,8 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ProfileCard = ({ profile }) => {
+    const navigate = useNavigate();
   return (
     <div className="profile-card">
       <div className="profile-left">
@@ -40,7 +42,7 @@ const ProfileCard = ({ profile }) => {
       </div>
       
       <div className="profile-right">
-        <button className="request-button">Request</button>
+        <button onClick={() => navigate("/request")}  className="request-button">asda</button>
       </div>
     </div>
   );
